@@ -20,6 +20,7 @@ class Installer
         // working directory : it needs to be set to the composer.json
         // directory to avoid any unexpected behaviour.
         $originalDir = getcwd();
+	putenv("COMPOSER_HOME={$this->baseDir}/vendor/composer");
         chdir($this->baseDir);
         $composer = Factory::create($this->io, $this->baseDir . '/composer.json');
         $installer = BaseInstaller::create($this->io, $composer);
